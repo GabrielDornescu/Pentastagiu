@@ -50,7 +50,6 @@ include 'functions.php';
         <form action="result.php" method="POST" class="center">
             <p class="label">Numar de pornire</p>
             <input type="text" name="startPoint"/>
-
             <p class="label">Numar de sfarsit</p>
             <input type="text" name="endPoint"/>
 
@@ -63,12 +62,11 @@ include 'functions.php';
         </form>
         <form action="curl.php">
             <input type="submit" name="Help" value="Help" onclick="curl()"/>
+        </form>
     </div>
     <div class="clear"></div>
 </div>
 <h2><img src="PHP.png" alt="PHP Logo"></h2>
-
-
 
 </div>
 </body>

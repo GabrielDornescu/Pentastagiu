@@ -7,37 +7,32 @@
  */
 
 include 'functions.php';
-verify();
-echo "<pre>";
-multiplication();
-register_database();
-
-
 ?>
 
 <html>
-
 <head>
-
-
     <style>
-
         table {
-
             border-style: solid;
-
             border-width: 2px;
-
             border-color: pink;
-
         }
-
     </style>
-
 </head>
 
 <body bgcolor="#EEFDEF">
 
-<button onclick="history.go(-1);">Back</button>
+    <?php
+
+    if (isValid()){
+        multiplication();
+        register_database();
+    } else {
+    ?>
+    <span style="color:red;text-align:center;">Va rugam sa completati toate campurile utilizand doar numere pozitive!<br>
+    <?php
+    }
+    ?>
+    <button onclick="history.go(-1);">Back</button>
 </body>
 

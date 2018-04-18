@@ -1,37 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Gabi
- * Date: 4/12/2018
- * Time: 1:10 PM
- */
 include 'db_connection.php';
-error_reporting(0);
 
-
-function verify()
+function isValid()
 {
-    if (is_numeric($_POST['startPoint']) && is_numeric($_POST['endPoint']) && is_numeric($_POST['iterations'])) {
-
-
-    } else {
-
-        echo '<span style="color:red;text-align:center;">Va rugam sa completati toate campurile utilizand doar cifre!<br>';
-        ?>
-        <!doctype html>
-        <html>
-        <button onclick="history.go(-1);">Back</button>
-        <?php
-        die();
-        ?>
-        </html>
-
-        <?php
-
+    if (!is_numeric($_POST['startPoint']) || $_POST['startPoint'] < 0 || !is_numeric($_POST['endPoint']) || ($_POST['endPoint']) < 1 || !is_numeric($_POST['iterations']) || $_POST['iterations'] <1) {
+        return false;
     }
 
-
+    return true;
 }
+
 
 function register_database()
 {
@@ -116,4 +94,3 @@ function curl()
     curl_close($ch);
 }
 
-?>
