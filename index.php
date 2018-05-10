@@ -61,7 +61,7 @@ include 'functions.php';
             <input type="submit" name="submit"/>
         </form>
         <form action="curl.php">
-            <input type="submit" name="Help" value="Help" onclick="curl()"/>
+            <input type="submit" name="Help" value="Help"/>
         </form>
     </div>
     <div class="clear"></div>

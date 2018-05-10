@@ -7,7 +7,7 @@ class Multiplications
     public $startPoint;
     public $endPoint;
     public $iterations;
-    public $numbers = [];
+    public $numbers;
 
 
     /**
@@ -27,7 +27,7 @@ class Multiplications
         $this->endPoint = $endPoint;
         $this->iterations = $iterations;
 
-        $this->numbers = (array_slice(range($this->startPoint + 1, $this->endPoint - 1), 0, $this->iterations ));
+        $this->numbers = (array_slice(range($this->startPoint + 1, $this->endPoint - 1), 0, $this->iterations));
 
 
 
@@ -54,14 +54,15 @@ class Multiplications
         return true;
     }
 
+}
 
-    public function curl()
-    {
-        $ch = curl_init("http://php.net/manual/ro/function.array-slice.php");
 
-        curl_setopt($ch, CURLOPT_HEADER, 0);
+ function curl()
+{
+    $ch = curl_init("http://php.net/manual/ro/function.array-slice.php");
 
-        curl_exec($ch);
-        curl_close($ch);
-    }
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+
+    curl_exec($ch);
+    curl_close($ch);
 }

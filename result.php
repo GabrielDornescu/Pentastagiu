@@ -12,6 +12,8 @@ include "functions.php";
 
     $multiplication = new Multiplications($_POST['startPoint'], $_POST['endPoint'], $_POST['iterations']);
 
+    $database = new DatabaseConnection();
+    $database->saveRequestToDB($_POST['startPoint'], $_POST['endPoint'], $_POST['iterations']);
 
 
     if ($multiplication->isInputValid()){

@@ -8,48 +8,45 @@
 
 class DatabaseConnection
 {
-    public $conn;
+    /**
+     * @var mysqli
+     */
+    public $connect;
     public $host;
     public $user;
     public $password;
     public $basename;
 
 
-
-    public function __construct($params=array())
-    {   $this->connect = false;
+    public function __construct()
+    {
+        $this->connect = false;
         $this->host = "localhost";
         $this->user = "root";
         $this->password = "";
         $this->basename = "pentastagiu";
+        $this->connection();
     }
 
 
     public function connection()
     {
-        $this->connect->mysqli_connect ($this->host,$this->user,$this->password,$this->basename);
-        if(!$this->connect)
-        {
-            die("connection object not created: ".mysqli_error($this->connect));
+        $this->connect = mysqli_connect($this->host, $this->user, $this->password, $this->basename);
+        if (!$this->connect) {
+            die("connection object not created: " . mysqli_error($this->connect));
         }
     }
 
 
-    public function saveRequestToDB()
+    public function saveRequestToDB($startpoint, $endpoint, $iterations)
     {
 
-        if (isset($_POST['submit'])) {
-
-            $startpoint = $_POST['startPoint'];
-            $endpoint = $_POST['endPoint'];
-            $iterations = $_POST['iterations'];
-
-            $connection=$this->mysqli_query("INSERT INTO multiplication (start,end,iterations) VALUES ('$startpoint', '$endpoint','$iterations')");
-            if(!$connection)
-                throw new Exception("Error: not connect to the server");
-
-        }
+        $connection = mysqli_query($this->connect, "INSERT INTO multiplication (start,end,iterations) VALUES ('$startpoint', '$endpoint','$iterations')");
+        if (!$connection)
+            throw new Exception("Error: not connect to the server");
 
     }
+
+
 }
 
