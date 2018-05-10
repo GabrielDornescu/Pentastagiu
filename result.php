@@ -1,4 +1,6 @@
 <?php
+include "functions.php";
+
 /**
  * Created by PhpStorm.
  * User: Gabi
@@ -6,33 +8,44 @@
  * Time: 8:34 PM
  */
 
-include 'functions.php';
-?>
 
-<html>
-<head>
-    <style>
-        table {
-            border-style: solid;
-            border-width: 2px;
-            border-color: pink;
-        }
-    </style>
-</head>
 
-<body bgcolor="#EEFDEF">
+    $multiplication = new Multiplications($_POST['startPoint'], $_POST['endPoint'], $_POST['iterations']);
 
-    <?php
 
-    if (isValid()){
-        multiplication();
-        register_database();
+
+    if ($multiplication->isInputValid()){
+        echo "<pre>";
+        echo "<b>1)</b>Sirul de numere in functie de numarul de elemente selectat este:";
+        echo "</pre>";
+
+        echo "<pre>";
+        print_r($multiplication->getNumbers());
+        echo "</pre>";
+
+        echo "<pre>";
+
+        echo "<b>2)</b>multipli de 3 sunt = </br>";
+        print_r($multiplication->getFilteredNumbersByMultiplier(3));
+
+        echo "<b>3)</b>numarul de numere multiplu de 4 este =" . count($multiplication->getFilteredNumbersByMultiplier(4)) . "\n <br>";
+
+        echo "<b>4)</b>suma numerelor multiplu de 5 este =" . array_sum($multiplication->getFilteredNumbersByMultiplier(5)) . "\n <br>";
+
+        echo "</pre>";
+
+
     } else {
     ?>
-    <span style="color:red;text-align:center;">Va rugam sa completati toate campurile utilizand doar numere pozitive!<br>
+    <html>
+    <body>
+    <span style="color:red;text-align:center;">Va rugam sa completati toate campurile utilizand doar numere pozitive!<br></span>
     <?php
     }
     ?>
     <button onclick="history.go(-1);">Back</button>
 </body>
+    </html>
+
+
 
